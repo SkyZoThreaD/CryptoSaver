@@ -2,7 +2,7 @@
 <CodeLite_Workspace Name="CryptoSaver" Database="">
   <Project Name="cryptosaverd" Path="cryptosaverd/cryptosaverd.project" Active="Yes"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
       <Project Name="cryptosaverd" ConfigName="Debug"/>
     </WorkspaceConfiguration>

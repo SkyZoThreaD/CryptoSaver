@@ -2,19 +2,19 @@
 ## Auto Generated makefile by CodeLite IDE
 ## any manual changes will be erased      
 ##
-## Debug
+## Release
 ProjectName            :=cryptosaverd
-ConfigurationName      :=Debug
-WorkspacePath          := "/home/tupac/Documents/CryptoSaver"
-ProjectPath            := "/home/tupac/Documents/CryptoSaver/cryptosaverd"
-IntermediateDirectory  :=./Debug
+ConfigurationName      :=Release
+WorkspacePath          := "/home/domo/CryptoSaver"
+ProjectPath            := "/home/domo/CryptoSaver/cryptosaverd"
+IntermediateDirectory  :=./Release
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=
 Date                   :=03/10/16
-CodeLitePath           :="/home/tupac/.codelite"
+CodeLitePath           :="/home/domo/.codelite"
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
 ObjectSuffix           :=.o
@@ -28,7 +28,7 @@ LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
 OutputFile             :=$(IntermediateDirectory)/$(ProjectName)
-Preprocessors          :=
+Preprocessors          :=$(PreprocessorSwitch)NDEBUG 
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
@@ -39,8 +39,8 @@ LinkOptions            :=
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
 IncludePCH             := 
 RcIncludePath          := 
-Libs                   := $(LibrarySwitch)pthread 
-ArLibs                 :=  "pthread" 
+Libs                   := $(LibrarySwitch)pthread $(LibrarySwitch)mysqlcppconn 
+ArLibs                 :=  "pthread" "mysqlcppconn" 
 LibPath                := $(LibraryPathSwitch). 
 
 ##
@@ -50,8 +50,8 @@ LibPath                := $(LibraryPathSwitch).
 AR       := /usr/bin/ar rcu
 CXX      := /usr/bin/g++
 CC       := /usr/bin/gcc
-CXXFLAGS :=  -g -O0 -std=c++14 -std=c++11 -Wall $(Preprocessors)
-CFLAGS   :=  -g -O0 -std=c++14 -std=c++11 -Wall $(Preprocessors)
+CXXFLAGS :=  -O2 -std=c++14 -std=c++11 -Wall $(Preprocessors)
+CFLAGS   :=  -O2 -std=c++14 -std=c++11 -Wall $(Preprocessors)
 ASFLAGS  := 
 AS       := /usr/bin/as
 
@@ -79,11 +79,11 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 	$(LinkerName) $(OutputSwitch)$(OutputFile) @$(ObjectsFileList) $(LibPath) $(Libs) $(LinkOptions)
 
 MakeIntermediateDirs:
-	@test -d ./Debug || $(MakeDirCommand) ./Debug
+	@test -d ./Release || $(MakeDirCommand) ./Release
 
 
 $(IntermediateDirectory)/.d:
-	@test -d ./Debug || $(MakeDirCommand) ./Debug
+	@test -d ./Release || $(MakeDirCommand) ./Release
 
 PreBuild:
 
@@ -92,7 +92,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/tupac/Documents/CryptoSaver/cryptosaverd/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/domo/CryptoSaver/cryptosaverd/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM "main.cpp"
 
@@ -100,7 +100,7 @@ $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) "main.cpp"
 
 $(IntermediateDirectory)/VFS_connector.cpp$(ObjectSuffix): VFS_connector.cpp $(IntermediateDirectory)/VFS_connector.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/tupac/Documents/CryptoSaver/cryptosaverd/VFS_connector.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/VFS_connector.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/domo/CryptoSaver/cryptosaverd/VFS_connector.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/VFS_connector.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/VFS_connector.cpp$(DependSuffix): VFS_connector.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/VFS_connector.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/VFS_connector.cpp$(DependSuffix) -MM "VFS_connector.cpp"
 
@@ -108,7 +108,7 @@ $(IntermediateDirectory)/VFS_connector.cpp$(PreprocessSuffix): VFS_connector.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/VFS_connector.cpp$(PreprocessSuffix) "VFS_connector.cpp"
 
 $(IntermediateDirectory)/logger.cpp$(ObjectSuffix): logger.cpp $(IntermediateDirectory)/logger.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/tupac/Documents/CryptoSaver/cryptosaverd/logger.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/logger.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/domo/CryptoSaver/cryptosaverd/logger.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/logger.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/logger.cpp$(DependSuffix): logger.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/logger.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/logger.cpp$(DependSuffix) -MM "logger.cpp"
 
@@ -116,7 +116,7 @@ $(IntermediateDirectory)/logger.cpp$(PreprocessSuffix): logger.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/logger.cpp$(PreprocessSuffix) "logger.cpp"
 
 $(IntermediateDirectory)/exception.cpp$(ObjectSuffix): exception.cpp $(IntermediateDirectory)/exception.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/tupac/Documents/CryptoSaver/cryptosaverd/exception.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/exception.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/domo/CryptoSaver/cryptosaverd/exception.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/exception.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/exception.cpp$(DependSuffix): exception.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/exception.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/exception.cpp$(DependSuffix) -MM "exception.cpp"
 
@@ -129,6 +129,6 @@ $(IntermediateDirectory)/exception.cpp$(PreprocessSuffix): exception.cpp
 ## Clean
 ##
 clean:
-	$(RM) -r ./Debug/
+	$(RM) -r ./Release/
 
 
