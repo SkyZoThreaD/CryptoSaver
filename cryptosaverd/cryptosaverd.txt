@@ -1,0 +1,1 @@
+./Debug/main.cpp.o ./Debug/VFS_connector.cpp.o ./Debug/logger.cpp.o ./Debug/exception.cpp.o
