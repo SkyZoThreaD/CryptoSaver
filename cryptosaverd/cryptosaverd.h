@@ -23,6 +23,7 @@
 #include <cppconn/exception.h>
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
+#include <cppconn/prepared_statement.h>
 
 // internals
 #include "exception.h"
@@ -39,7 +40,7 @@
     const int VFS_TCP_PORT = 8888;
     const int VALUE_1_FILENAME = 0;
     const int VALUE_2_HOSTNAME = 1;
-    #define MYSQL_USER "cryptosaverd"
+    #define MYSQL_USER "cryptosaver"
     #define MYSQL_PASSORD "password"
     #define MYSQL_BASE "cryptosaver"
 

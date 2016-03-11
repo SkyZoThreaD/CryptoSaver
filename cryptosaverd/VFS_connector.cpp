@@ -24,15 +24,15 @@ void vfs_mysql_connector_thread()
     
     sql::Driver *driver;
     sql::Connection *con;
-    sql::Statement *stmt;
+    sql::PreparedStatement *pstmt;
     
     driver = get_driver_instance();
     con = driver->connect("tcp://127.0.0.1:3306", MYSQL_USER, MYSQL_PASSORD);
     con->setSchema(MYSQL_BASE);
-    stmt = con->createStatement();
-		
+    
+
 	socket_desc = socket(AF_INET , SOCK_STREAM , 0);
-	if (socket_desc == -1) throw new exception(ex_socket_error, "Could not create socket");
+    if (socket_desc == -1) throw new exception(ex_socket_error, "Could not create socket");
 		
 	server.sin_family = AF_INET;
 	server.sin_addr.s_addr = INADDR_ANY;
@@ -59,6 +59,8 @@ void vfs_mysql_connector_thread()
 			if(read_size == 0) throw new exception(ex_socket_error, "socket disconected before sending all data");
 			else if(read_size == -1) throw new exception(ex_socket_error, "recv socket failed");
             
+            client_message[read_size] = '\0';
+            
             switch(curread)
             {
                 case VALUE_1_FILENAME: value1 = client_message; break;
@@ -68,12 +70,13 @@ void vfs_mysql_connector_thread()
 		}
         
         // send to mysql table
-        std::string query = "INSERT INTO `modifs_incoming` (`filename`, `hostname`) VALUES ('";
-        query += VALUE_1_FILENAME;
-        query += "', '";
-        query += VALUE_2_HOSTNAME + "');";
-        stmt->executeQuery(query);
+        pstmt = con->prepareStatement("INSERT INTO modifs_incoming(filename, hostname) VALUES (?,?);");
+        pstmt->setString(1,value1);
+        pstmt->setString(2,value2);
+        pstmt->executeUpdate();
+        delete pstmt;
 	}
+    delete con;
 }
 
 vfs_connector::vfs_connector():connector_thread(vfs_mysql_connector_thread)
